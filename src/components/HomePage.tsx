@@ -24,14 +24,8 @@ function HomePage() {
     setPart(event.target.value);
   };
   return (
-    <div
-      style={{
-        marginLeft: '20%',
-        marginRight: '20%',
-        marginTop: '30%',
-      }}
-    >
-      <h1>Welcome to Dictionary</h1>
+    <div className="home-search">
+      <h2>Dictionary</h2>
       <TextField
         id="filled-basic"
         label="Search"
@@ -47,8 +41,12 @@ function HomePage() {
           onChange={handleChange}
         >
           <MenuItem value={'All'}>All</MenuItem>
-          {PART_OF_SPEECH_DICT.map((part) => {
-            return <MenuItem value={part}>{part}</MenuItem>;
+          {PART_OF_SPEECH_DICT.map((part, i) => {
+            return (
+              <MenuItem key={i} value={part}>
+                {part}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>

@@ -34,8 +34,9 @@ function PartOfSpeechComp({ getDefinition }: PartOfSpeechProps) {
       {isLoading ? (
         <span className="loader"></span>
       ) : (
-        definition?.map((deff) => (
+        definition?.map((deff, i) => (
           <Definition
+            key={i}
             definition={deff}
             getDefinition={getDefinition}
             setDefinition={setDefinition}

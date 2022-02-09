@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { WordObj } from '../../@types/wordtype';
-import ErrorPage from './ErrorPage';
 interface DefinitionProps {
   getDefinition: (word: string, partOfSpeech: string) => Promise<any>;
   definition: WordObj | undefined;
@@ -21,22 +20,20 @@ const Definition = ({
       });
     }
   };
-
-  if (!definition) {
-    return <ErrorPage />;
-  }
   return (
     <div>
       <h1>
-        {definition.word}-<i>{definition.pos}</i>
+        {definition!.word}-<i>{definition!.pos}</i>
       </h1>
-      {definition.definitions.map((defin, i) => (
-        <div className="word-def ">
+      {definition!.definitions.map((defin, i) => (
+        <div className="word-def " key={i}>
           <p>
             {i + 1}.{' '}
-            {defin.split(' ').map((word) => {
+            {defin.split(' ').map((word, i) => {
               return (
                 <span
+                  className="word-word"
+                  key={i}
                   onClick={() => {
                     navigating(word);
                   }}
