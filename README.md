@@ -11,7 +11,7 @@ An English dictionary application containing more than 100,000 words!
 
 ## Demo ✨
 
-S3 deployment
+[S3 deployment](http://mydictappfikler.s3-website-us-east-1.amazonaws.com/)
 
 ## Screenshots 📸
 
