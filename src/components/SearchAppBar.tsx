@@ -9,9 +9,11 @@ import { Divider, Link, ListItem, SwipeableDrawer } from '@mui/material';
 import { ChevronLeft } from '@mui/icons-material';
 import { PART_OF_SPEECH_DICT } from '../helpers/partOfSpeech';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchAppBar() {
   const [open, setOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -50,7 +52,7 @@ export default function SearchAppBar() {
               color="textPrimary"
               variant="button"
               underline="none"
-              href={`/`}
+              onClick={() => navigate('/')}
             >
               Home
             </Link>
@@ -62,7 +64,7 @@ export default function SearchAppBar() {
                   color="textPrimary"
                   variant="button"
                   underline="none"
-                  href={`http://localhost:3000/partOf-speech/${part}`}
+                  onClick={() => navigate(`/partOf-speech/${part}`)}
                 >
                   {part}
                 </Link>
