@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { WordObj } from '../../@types/wordtype';
 import Definition from './Definition';
 
@@ -26,7 +27,15 @@ function PartOfSpeechComp({ getDefinition }: PartOfSpeechProps) {
       setDefinition([response.data]);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      toast.error('Error ocurred', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   return (

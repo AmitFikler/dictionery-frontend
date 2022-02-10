@@ -5,6 +5,8 @@ import SearchAppBar from './components/SearchAppBar';
 import PartOfSpeechComp from './components/PartOfSpeech';
 import HomePage from './components/HomePage';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const getDefinition = async (word: string, partOfSpeech: string) => {
@@ -16,14 +18,23 @@ function App() {
       );
       return response.data;
     } catch (error) {
-      console.log(error);
+      toast.error('Error ocurred', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
   return (
     <>
-      <SearchAppBar />
+      <ToastContainer />
       <Router>
+        <SearchAppBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
